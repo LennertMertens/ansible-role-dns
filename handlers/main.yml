@@ -1,0 +1,7 @@
+# roles/dns/handlers/main.yml
+---
+
+- name: restart 
+  service:
+    name: "{{ network_service }}"
+    state: restarted
