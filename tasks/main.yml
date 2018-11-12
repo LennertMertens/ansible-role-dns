@@ -12,7 +12,15 @@
   lineinfile:
     path: "/etc/sysconfig/network-scripts/ifcfg-{{ dns_intname }}"
     line: "PEERDNS=no"
-  tags: dns
+  tags: 
+    - dns
+
+- name: Add search domain
+  lineinfile:
+    path: "/etc/sysconfig/network-scripts/ifcfg-{{ dns_intname }}"
+    line: "SEARCH={{ dns_search }}"
+  tags:
+    - dns
 
   
 - name: Add DNS servers

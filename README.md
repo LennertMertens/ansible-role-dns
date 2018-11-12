@@ -15,7 +15,7 @@ No specific requirements
 | :---         | :---            | :---                                   |
 | `dns_intname`| eth0            | Interface name for interface in domain |
 | `dns_nameservers` |       | Nameservers to be added to /etc/resolv.conf |
-
+| `dns_search` | avalon.lan | Configure search domain                     |
 ## Dependencies
 
 No dependencies.

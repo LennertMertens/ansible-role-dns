@@ -4,3 +4,4 @@
 ---
 dns_intname: eth0
 dns_options: options single-request-reopen
+dns_search: avalon.lan
