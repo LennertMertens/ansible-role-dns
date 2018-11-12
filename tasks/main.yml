@@ -3,7 +3,7 @@
 
 - include_vars: "{{ item }}"
   with_first_found:
-    - "{{ ansible_distribution }}.yml"
+    - "RedHat.yml"
   tags: 
     - dns
 
@@ -14,29 +14,18 @@
     line: "PEERDNS=no"
   tags: dns
 
-- name: Clear /etc/resolv.conf
-  shell: "echo > /etc/resolv.conf"
-  tags:
-    - dns
-
-- name: Add search domain
-  lineinfile:
-    path: /etc/resolv.conf
-    line: "{{ dns_search }}"
-  tags: 
-    - dns
   
 - name: Add DNS servers
   lineinfile: 
-    path: /etc/resolv.conf
+    path: "/etc/sysconfig/network-scripts/ifcfg-{{ dns_intname }}"
     line: "{{ item }}"
-    with_items: "{{ dns_nameservers }}"
+  with_items: "{{ dns_nameservers }}"
   tags:
     - dns
-  
-- name: Add options
-  lineinfile:
-    path: /etc/resolv.conf
-    line: "{{ dns_options }}"
+
+- name: Restart network service
+  systemd:
+    name: network.service
+    state: restarted
   tags:
     - dns

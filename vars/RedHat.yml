@@ -2,7 +2,5 @@
 #
 # Distribution-specific variables for RHEL, CentOS, ...
 ---
-dns_domain: localhost.local
-dns_search: localhost.local
 dns_intname: eth0
 dns_options: options single-request-reopen
