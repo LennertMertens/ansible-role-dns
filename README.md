@@ -13,10 +13,7 @@ No specific requirements
 
 | Variable     | Default         | Comments (type)                        |
 | :---         | :---            | :---                                   |
-| `dns_domain` | localhost.local | Domain name                            |
-| `dns_search` | localhost.local | Search domain                          |
 | `dns_intname`| eth0            | Interface name for interface in domain |
-| `dns_options`| options single-request-reopen | Options for DNS          |
 | `dns_nameservers` |       | Nameservers to be added to /etc/resolv.conf |
 
 ## Dependencies
@@ -27,8 +24,8 @@ No dependencies.
 - Add nameservers
 ```
 dns_nameservers: 
-  - 192.168.1.10
-  - 10.0.2.3
+  - "DNS1=192.168.1.10"
+  - "DNS2=10.0.2.3"
 ```
 
 
