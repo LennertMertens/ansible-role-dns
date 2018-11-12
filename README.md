@@ -1,8 +1,8 @@
 # Ansible role `DNS`
 
-An Ansible role for configuring DNS servers in /etc/resolv.conf
+An Ansible role for configuring DNS servers
 
--
+
 
 ## Requirements
 
@@ -11,21 +11,32 @@ No specific requirements
 ## Role Variables
 
 
-| Variable     | Default         | Comments (type)                        |
-| :---         | :---            | :---                                   |
-| `dns_intname`| eth0            | Interface name for interface in domain |
-| `dns_nameservers` |       | Nameservers to be added to /etc/resolv.conf |
-| `dns_search` | avalon.lan | Configure search domain                     |
+| Variable          | Default         | Comments (type)                             |
+| :---              | :---            | :---                                        |
+| `dns_intname`     | eth0            | Interface name for interface in domain      |
+| `dns_nameservers` |                 | Nameservers to be added to /etc/resolv.conf |
+| `dns_search`      | avalon.lan      | Configure search domain                     |
+
 ## Dependencies
 
 No dependencies.
 
 ## Examples
-- Add nameservers
+
+- Add the interface name for which these options are added. This is necessary because all changes are made in the `/etc/sysconfig/network-scripts/ifcfg-eth0` files in order to be persistent
+```
+dns_intname: eth1
+```
+- Add nameservers as following, be sure to add `DNS1=`,`DNS=2`etc.
 ```
 dns_nameservers: 
   - "DNS1=192.168.1.10"
   - "DNS2=10.0.2.3"
+```
+
+- Add the domain name in which the DNS is sought
+```
+dns_search: local.domain
 ```
 
 
