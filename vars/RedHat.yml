@@ -1,9 +1,8 @@
-# roles/ROLENAME/vars/RedHat.yml
+# roles/dns/vars/RedHat.yml
 #
 # Distribution-specific variables for RHEL, CentOS, ...
 ---
-
-ROLENAME_packages:
-  - ROLENAME
-
-network_service: network.service
+dns_domain: localhost.local
+dns_search: localhost.local
+dns_intname: eth0
+dns_options: options single-request-reopen

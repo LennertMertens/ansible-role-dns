@@ -1,22 +1,42 @@
-# roles/ROLENAME/tasks/main.yml
+# roles/dns/tasks/main.yml
 ---
 
 - include_vars: "{{ item }}"
   with_first_found:
     - "{{ ansible_distribution }}.yml"
-    - "{{ ansible_os_family }}.yml"
-  tags: ROLENAME
+  tags: 
+    - dns
 
-- name: Install packages
-  package:
-    name: "{{ item }}"
-    state: installed
-  with_items: "{{ ROLENAME_packages }}"
-  tags: ROLENAME
 
-- name: Ensure service is started
-  service:
-    name: "{{ ROLENAME_service }}"
-    state: started
-    enabled: true
-  tags: ROLENAME
+- name: Disable PEERDNS
+  lineinfile:
+    path: "/etc/sysconfig/network-scripts/ifcfg-{{ dns_intname }}"
+    line: "PEERDNS=no"
+  tags: dns
+
+- name: Clear /etc/resolv.conf
+  shell: "echo > /etc/resolv.conf"
+  tags:
+    - dns
+
+- name: Add search domain
+  lineinfile:
+    path: /etc/resolv.conf
+    line: "{{ dns_search }}"
+  tags: 
+    - dns
+  
+- name: Add DNS servers
+  lineinfile: 
+    path: /etc/resolv.conf
+    line: "{{ item }}"
+    with_items: "{{ dns_nameservers }}"
+  tags:
+    - dns
+  
+- name: Add options
+  lineinfile:
+    path: /etc/resolv.conf
+    line: "{{ dns_options }}"
+  tags:
+    - dns

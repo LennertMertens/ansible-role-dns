@@ -11,17 +11,25 @@ No specific requirements
 ## Role Variables
 
 
-| Variable   | Default | Comments (type)  |
-| :---       | :---    | :---             |
-| `role_var` | -       | (scalar) PURPOSE |
+| Variable     | Default         | Comments (type)                        |
+| :---         | :---            | :---                                   |
+| `dns_domain` | localhost.local | Domain name                            |
+| `dns_search` | localhost.local | Search domain                          |
+| `dns_intname`| eth0            | Interface name for interface in domain |
+| `dns_options`| options single-request-reopen | Options for DNS          |
+| `dns_nameservers` |       | Nameservers to be added to /etc/resolv.conf |
 
 ## Dependencies
 
 No dependencies.
 
-## Example Playbook
-
-See the test playbooks in either the [Vagrant](https://github.com/bertvv/ansible-role-ROLENAME/blob/vagrant-tests/test.yml) or [Docker](https://github.com/bertvv/ansible-role-ROLENAME/blob/docker-tests/test.yml) test environment. See the section Testing for details.
+## Examples
+- Add nameservers
+```
+dns_nameservers: 
+  - 192.168.1.10
+  - 10.0.2.3
+```
 
 
 ## Contributing
@@ -32,9 +40,10 @@ Pull requests are also very welcome. The best way to submit a PR is by first cre
 
 ## License
 
-2-clause BSD license, see [LICENSE.md](LICENSE.md)
+2-clause BSD license, see [LICENSE.md](LICENSE)
 
 ## Contributors
 
-- [Bert Van Vreckem](https://github.com/bertvv/) (maintainer)
+- [Bert Van Vreckem](https://github.com/bertvv/) (maintainer of Ansible Skeleton)
+- [Lennert Mertens](https://github.com/LennertMertens/)
 
