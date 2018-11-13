@@ -2,3 +2,5 @@
 ---
 network_service: network.service
 dns_nameservers: []
+dns_intname: eth0
+dns_search: avalon.lan

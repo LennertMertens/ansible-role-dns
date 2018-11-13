@@ -2,5 +2,4 @@
 #
 # Distribution-specific variables for RHEL, CentOS, ...
 ---
-dns_intname: eth0
-dns_search: avalon.lan
+
