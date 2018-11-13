@@ -10,7 +10,6 @@
   lineinfile:
     path: "/etc/sysconfig/network-scripts/ifcfg-{{ dns_intname }}"
     line: "PEERDNS=no"
-  notify: "restart network"
   tags: 
     - dns
 
@@ -18,7 +17,6 @@
   lineinfile:
     path: "/etc/sysconfig/network-scripts/ifcfg-{{ dns_intname }}"
     line: "SEARCH={{ dns_search }}"
-  notify: "restart network"
   tags:
     - dns
 
@@ -27,7 +25,6 @@
     path: "/etc/sysconfig/network-scripts/ifcfg-{{ dns_intname }}"
     line: "{{ item }}"
   with_items: "{{ dns_nameservers }}"
-  notify: "restart network"
   tags:
     - dns
 
