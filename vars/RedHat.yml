@@ -3,4 +3,4 @@
 # Distribution-specific variables for RHEL, CentOS, ...
 ---
 dns_intname: eth1
-dns_search: avalon.lan
+dns_search: green.local

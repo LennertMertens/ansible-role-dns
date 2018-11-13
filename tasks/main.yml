@@ -30,3 +30,10 @@
   notify: "restart network"
   tags:
     - dns
+
+- name: Restart network service
+  systemd:
+    name: network.service
+    state: restarted
+  tags:
+    - dns
