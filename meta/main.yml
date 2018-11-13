@@ -12,5 +12,5 @@ galaxy_info:
     - system
     - dns 
     - configuration
-    - resolve.conf
+    - resolv-conf
 dependencies: []

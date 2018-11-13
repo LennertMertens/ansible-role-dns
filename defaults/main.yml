@@ -1,5 +1,4 @@
 # roles/dns/defaults/main.yml
 ---
-
 network_service: network.service
 dns_nameservers: []

@@ -1,17 +1,16 @@
 # roles/dns/tasks/main.yml
 ---
-
 - include_vars: "{{ item }}"
   with_first_found:
     - "RedHat.yml"
   tags: 
     - dns
 
-
 - name: Disable PEERDNS
   lineinfile:
     path: "/etc/sysconfig/network-scripts/ifcfg-{{ dns_intname }}"
     line: "PEERDNS=no"
+  notify: "restart network"
   tags: 
     - dns
 
@@ -19,21 +18,15 @@
   lineinfile:
     path: "/etc/sysconfig/network-scripts/ifcfg-{{ dns_intname }}"
     line: "SEARCH={{ dns_search }}"
+  notify: "restart network"
   tags:
     - dns
 
-  
 - name: Add DNS servers
   lineinfile: 
     path: "/etc/sysconfig/network-scripts/ifcfg-{{ dns_intname }}"
     line: "{{ item }}"
   with_items: "{{ dns_nameservers }}"
-  tags:
-    - dns
-
-- name: Restart network service
-  systemd:
-    name: network.service
-    state: restarted
+  notify: "restart network"
   tags:
     - dns

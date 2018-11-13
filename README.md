@@ -52,6 +52,5 @@ Pull requests are also very welcome. The best way to submit a PR is by first cre
 
 ## Contributors
 
+- [Lennert Mertens](https://github.com/LennertMertens/) (maintainer)
 - [Bert Van Vreckem](https://github.com/bertvv/) (maintainer of Ansible Skeleton)
-- [Lennert Mertens](https://github.com/LennertMertens/)
-
