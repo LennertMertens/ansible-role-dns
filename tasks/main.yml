@@ -3,6 +3,7 @@
 - include_vars: "{{ item }}"
   with_first_found:
     - "RedHat.yml"
+    - "defaults.yml"
   tags: 
     - dns
 
