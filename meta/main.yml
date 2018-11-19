@@ -2,6 +2,7 @@
 galaxy_info:
   role_name: dns
   author: Lennert Mertens
+  company: Engicom
   description: Role for configuring DNS servers in /etc/resolv.conf
   license: BSD
   min_ansible_version: 2.0

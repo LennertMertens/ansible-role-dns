@@ -1,6 +1,6 @@
 # Ansible role `DNS`
 
-An Ansible role for configuring DNS servers
+An Ansible role for configuring DNS servers on interfaces.
 
 
 

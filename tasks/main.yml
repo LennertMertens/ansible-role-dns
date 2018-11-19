@@ -1,6 +1,7 @@
 # roles/dns/tasks/main.yml
 ---
-- include_vars: "{{ item }}"
+- name: Include variables
+  include_vars: "{{ item }}"
   with_first_found:
     - "RedHat.yml"
     - "default.yml"
